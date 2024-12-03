@@ -27,16 +27,3 @@ for i in memory:
         total += product
 
 print(total)
-
-
-def calculate(memory: str) -> int:
-    """
-    Calculate the sum of products from matches of 'mul(a,b)' in the input string.
-
-    :param memory: The input string containing 'mul(a,b)' patterns.
-    :return: int: The sum of the products of all matched pairs. Returns 0 if no matches are found.
-    """
-    re_pattern = r"mul\(([1-9][0-9]{0,2}),([1-9][0-9]{0,2})\)"
-    if matches := re.findall(re_pattern, memory):
-        return sum(int(match[0]) * int(match[1]) for match in matches)
-    return 0
