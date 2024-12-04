@@ -1,19 +1,13 @@
 import csv
 import re
 
-memory = []
+masterMemory = ""
 
 with open('data.csv', newline = None) as file:
     reader = csv.reader(file, delimiter='=') #= doesn't appear in the data lol
 
     for row in reader:
-        memory.append(row)
-
-masterMemory = ""
-for rows in memory:
-    masterMemory = masterMemory + str(rows)
-
-print(masterMemory)
+        masterMemory = masterMemory + str(row)
 
 processedMemory = []
 
@@ -36,4 +30,3 @@ for i in processedMemory:
         total += product
 
 print(total)
-# 95846796
