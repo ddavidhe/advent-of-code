@@ -22,7 +22,6 @@ for i in memory:
     for j in matches:
         num_pattern = r'\d{1,3}'
         nums = re.findall(num_pattern, j)
-        print(nums)
         product = int(nums[0]) * int(nums[1])
         total += product
 
