@@ -3,24 +3,26 @@ import re
 
 memory = []
 
-with open('mock.csv', newline = '\n') as file:
+with open('data.csv', newline = None) as file:
     reader = csv.reader(file, delimiter='=') #= doesn't appear in the data lol
 
     for row in reader:
         memory.append(row)
 
+masterMemory = ""
+for rows in memory:
+    masterMemory = masterMemory + str(rows)
+
+print(masterMemory)
+
 processedMemory = []
 
-for rows in memory:
-    cut_up = str(rows).split("do()")
-    for pieces in cut_up:
-        # ok the idea is that every "piece" begins with do.
-        # Then if I see don't i just stop.
-        subSplit = pieces.split("don't",1)[0]
-        processedMemory.append(subSplit)
-
-for i in range(len(processedMemory)):
-    print(processedMemory[i], "\n")
+cut_up = masterMemory.split("do()")
+for pieces in cut_up:
+    # ok the idea is that every "piece" begins with do.
+    # Then if I see don't i just stop.
+    subSplit = pieces.split("don't",1)[0]
+    processedMemory.append(subSplit)
 
 total = 0
 for i in processedMemory:
@@ -30,8 +32,8 @@ for i in processedMemory:
     for j in matches:
         num_pattern = r'\d{1,3}'
         nums = re.findall(num_pattern, j)
-        print(nums)
         product = int(nums[0]) * int(nums[1])
         total += product
 
 print(total)
+# 95846796
