@@ -21,7 +21,6 @@ for i in range(140):
         temp.append(cur_wor[j])
         # print(temp)
     cross_matrix.append(temp)
-print(cross_matrix[0][139])
 
 # cross_matrix[0] is the first row
 # cross_matrix[0][0] is the first element of the first row
@@ -30,7 +29,90 @@ print(cross_matrix[0][139])
 # if i hit an X, search the 8 cardinal directions if they're in bound
 # realize that if we can search Y and X, we can do that diag
 
+counter = 0
 for i in range(140):
     for j in range(140):
-        coord = (i,j)
+        up = True
+        down = True
+        left = True
+        right = True
+        upleft = True
+        upright = True
+        downleft = True
+        downright = True
+
+        if (j < 3):
+            left = False
+            upleft = False
+            downleft = False
+        if (j > 136):
+            right = False
+            upright = False
+            downright = False
+        if (i < 3):
+            up = False
+            upleft = False
+            upright = False
+        if (i > 136):
+            down = False
+            downleft = False
+            downright = False
         
+        if (cross_matrix[i][j] == 'X'):
+            if (up):
+                # extract the word upwards
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i-k][j]
+                    if word == 'XMAS':
+                        counter += 1
+            if (down):
+                # extract the word downwards
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i+k][j]
+                    if word == 'XMAS':
+                        counter += 1
+            if (left):
+                # extract the word leftwards
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i][j-k]
+                    if word == 'XMAS':
+                        counter += 1
+            if (right):
+                # extract the word rightwards
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i][j+k]
+                    if word == 'XMAS':
+                        counter += 1
+            if (upleft):
+                # extract the word upleft
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i-k][j-k]
+                    if word == 'XMAS':
+                        counter += 1
+            if (upright):
+                # extract the word upright
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i-k][j+k]
+                    if word == 'XMAS':
+                        counter += 1
+            if (downleft):
+                # extract the word downleft
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i+k][j-k]
+                    if word == 'XMAS':
+                        counter += 1
+            if (downright):
+                # extract the word downright
+                word = ''
+                for k in range(4):
+                    word += cross_matrix[i+k][j+k]
+                    if word == 'XMAS':
+                        counter += 1
+print(counter)
