@@ -27,7 +27,7 @@ for i in range(140):
 
 # walk through my matrix.
 # if i hit an X, search the 8 cardinal directions if they're in bound
-# realize that if we can search Y and X, we can do that diag
+# realize that if we can search Y and X, we can do that diagonal line
 
 counter = 0
 for i in range(140):
