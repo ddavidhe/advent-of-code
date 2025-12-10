@@ -1,5 +1,5 @@
 rows = []
-with open('sample.txt', 'r') as file:
+with open('day7.txt', 'r') as file:
     for line in file:
         rows.append(line.strip())
 
